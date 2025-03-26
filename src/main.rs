@@ -1,9 +1,19 @@
 use solana_sdk::signature::{Keypair, Signer};
 use std::fs;
 
+enum Action {
+    Gen,
+    Read,
+    Stop,
+}
+
 fn main() {
+    generate_keys();
+}
+
+fn generate_keys() {
     let keypair: Keypair = Keypair::new();
-    
+
     let private_key: String = bs58::encode(keypair.to_bytes()).into_string();
     let public_key: String = keypair.pubkey().to_string();
 
